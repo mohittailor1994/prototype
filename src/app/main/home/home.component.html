@@ -1,19 +1,53 @@
-<div style="height: 100vh;">
-  <mat-toolbar style="background: darkseagreen;">
-    <mat-toolbar-row>
-      <span>Prototype</span>
-      <span class="menu-spacer"></span>
-      <div class="menu-list">
-        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-        <a href="home" mat-button>Home</a>
-        <a href="home" mat-button>Projects</a>
-        <a href="home" mat-button>Timesheets</a>
-        <a href="home" mat-button>Time Off</a>
-        <a href="home" mat-button>Expenses</a>
-        <a href="home" mat-button>Tickets</a>
-        <a href="home" mat-button>Documents</a>
-        <a href="home" mat-button>User</a>
+<app-toolbar></app-toolbar>
+<div style="height: 100vh;" class="home">
+  <div class="home-details">
+    <mat-card class="my-card">
+      <div class="title">
+        <h2>To-Do (1)</h2>
       </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
+      <div class="middle">
+        <div class="details">
+          <h3 class="weight">Assignment : </h3>
+          <h3> Application Programmer V</h3>
+        </div>
+        <div class="details">
+          <h3 class="weight">Company : </h3>
+          <h3>Bank Of America - CLP - BACJ</h3>
+        </div>
+      </div>
+      <div class="middle">
+        <div class="details">
+          <h3 class="weight">Start : </h3>
+          <h3> 04/11/2022 </h3>
+        </div>
+        <div class="details">
+          <h3 class="weight">End : </h3>
+          <h3> 12/31/2022 </h3>
+        </div>
+        <div class="details">
+          <h3 class="weight">Worker ID : </h3>
+          <h3>BACJWK00030776</h3>
+        </div>
+      </div>
+      <div class="end">
+        <div class="details">
+          <span class="weight">Time Sheet</span>
+          <h3> Complete Time Sheet</h3>
+        </div>
+        <div class="details">
+          <span class="weight">ID</span>
+          <h3>BACJTS01164316</h3>
+        </div>
+        <div class="details">
+          <span class="weight">Period</span>
+          <h3>07/11/2022 - 07/17/2022</h3>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="details">
+          <span class="footer-text">Don't see your time sheet ?</span>
+        </div>
+      </div>
+    </mat-card>
+  </div>
 </div>

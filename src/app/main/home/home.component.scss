@@ -1,8 +1,71 @@
-.menu-spacer {
-  flex: 1 1 auto;
+.home{
+  .mat-toolbar-row span{
+    color: #DDDDDD;
+  }
 }
 .menu-list a{
-  background: #3f51b5;
   margin-right: 5px;
   color: white;
+}
+.home-details{
+  padding: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .my-card{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 70%;
+    .title{
+        padding: 15px;
+        border-bottom: 1px solid gainsboro;
+      span{
+        font-size: 15px;
+      }
+    }
+    .middle{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: aliceblue;
+      padding: 5px;
+
+
+      .details{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .weight{
+          font-weight: 700;
+        }
+      }
+    }
+    .end{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px;
+      border-bottom: 1px solid gainsboro;
+
+      .details{
+        display: flex;
+        flex-direction: column;
+
+        .weight{
+          font-weight: 700;
+        }
+      }
+    }
+    .footer{
+      .details{
+        padding: 5px;
+        display: flex;
+        justify-content: flex-end;
+        font-size: 15px;
+        color: blueviolet;
+      }
+    }
+  }
 }

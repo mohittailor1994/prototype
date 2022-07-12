@@ -7,6 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './main/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppsModule } from './main/apps.module';
 
 const appRoutes: Routes = [
   {
@@ -23,11 +25,13 @@ const appRoutes: Routes = [
     AppComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(appRoutes, {relativeLinkResolution: 'legacy'}),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule,
+    AppsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
