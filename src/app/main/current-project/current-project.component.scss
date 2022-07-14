@@ -1,0 +1,30 @@
+.breadcrumb_bag{
+  padding: 10px;
+  background-color: #FFFFFF;
+  color: #081845;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 27px;
+  left: 32.81%;
+  right: 66.77%;
+  top: 1.48%;
+  bottom: 96.3%;
+  font-family: Poppins, sans-serif;
+}
+
+.form-details{
+  padding: 25px;
+
+  mat-card{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+}
+mat-form-field {
+  width: 50%;
+}
+.input-font-bold{
+  font-weight: 800;
+  width: 100%;
+}
+

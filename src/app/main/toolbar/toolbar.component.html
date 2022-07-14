@@ -6,10 +6,14 @@
       <div class="menu-list">
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
         <a href="home" mat-button>Home</a>
-        <a href="home" mat-button>Projects</a>
+        <a [matMenuTriggerFor]="project" mat-button>Projects</a>
+        <mat-menu #project="matMenu">
+          <button [routerLink]="'../current-project'" mat-menu-item>Current Project</button>
+          <button [routerLink]="'../project'" mat-menu-item>All Projects</button>
+        </mat-menu>
         <a mat-button [matMenuTriggerFor]="menu">Timesheets</a>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>Current TimeSheets</button>
+          <button [routerLink]="'../current-timesheet'" mat-menu-item>Current TimeSheets</button>
           <button [routerLink]="'../past-due'" mat-menu-item>Past Due TimeSheets</button>
           <button mat-menu-item>Submitted</button>
           <button mat-menu-item>Rejected</button>

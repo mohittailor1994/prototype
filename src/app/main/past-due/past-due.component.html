@@ -10,92 +10,61 @@
     <div>{{title}}</div>
     <form #formControl="ngForm" autocomplete="off">
       <mat-table [dataSource]="dataSource" #timesheetTable matSort>
-
         <ng-container matColumnDef="actions">
-          <mat-header-cell *matHeaderCellDef class='actions'><div>Day</div></mat-header-cell>
+          <mat-header-cell *matHeaderCellDef class='actions'><div>Action</div></mat-header-cell>
           <mat-cell *matCellDef="let entry"  class='actions'>
-            {{entry.name}}
+            <button color="primary" mat-button>View</button>
+            <button color="accent" mat-button>Edit</button>
           </mat-cell>
           <mat-footer-cell *matFooterCellDef class='actions'></mat-footer-cell>
         </ng-container>
 
 
-        <ng-container matColumnDef="monday">
-          <mat-header-cell *matHeaderCellDef>Monday</mat-header-cell>
-          <mat-cell *matCellDef="let entry;let i = index;" class="hours">
-            <mat-form-field>
-              <input min=0  max=23.75 pattern="^(?!0\d)\d+(?:[.](?:25|5|75|0)0*)?$" required #today="ngModel" matInput [(ngModel)]="entry.mondayHours"  name="monday{{i}}">
-            </mat-form-field>
+        <ng-container matColumnDef="period">
+          <mat-header-cell *matHeaderCellDef>Period</mat-header-cell>
+          <mat-cell *matCellDef="let entry;let i = index;" class="hours">{{entry.period}}</mat-cell>
+          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+          <mat-cell *matCellDef="let entry;let i = index;" class="hours"> {{entry.status}}
           </mat-cell>
           <mat-footer-cell *matFooterCellDef></mat-footer-cell>
         </ng-container>
 
-        <ng-container matColumnDef="tuesday">
-          <mat-header-cell *matHeaderCellDef>Tuesday</mat-header-cell>
-          <mat-cell *matCellDef="let entry;let i = index;" class="hours">
-            <mat-form-field>
-              <input min=0  max=23.75 pattern="^(?!0\d)\d+(?:[.](?:25|5|75|0)0*)?$" required #today="ngModel" matInput [(ngModel)]="entry.tuesdayHours" name="tuesday{{i}}">
-            </mat-form-field>
+        <ng-container matColumnDef="ragular">
+          <mat-header-cell *matHeaderCellDef>Ragular Hours</mat-header-cell>
+          <mat-cell *matCellDef="let entry;let i = index;" class="hours">{{entry.ragular}}
           </mat-cell>
           <mat-footer-cell *matFooterCellDef></mat-footer-cell>
         </ng-container>
 
-        <ng-container matColumnDef="wednesday">
-          <mat-header-cell *matHeaderCellDef>Wednesday</mat-header-cell>
-          <mat-cell *matCellDef="let entry;let i = index;" class="hours">
-            <mat-form-field>
-              <input min=0  max=23.75 pattern="^(?!0\d)\d+(?:[.](?:25|5|75|0)0*)?$" required #today="ngModel" matInput [(ngModel)]="entry.wednesdayHours" name="wednesday{{i}}">
-            </mat-form-field>
+        <ng-container matColumnDef="overtime">
+          <mat-header-cell *matHeaderCellDef>Overtime Hours</mat-header-cell>
+          <mat-cell *matCellDef="let entry;let i = index;" class="hours">{{entry.overtime}}
           </mat-cell>
           <mat-footer-cell *matFooterCellDef></mat-footer-cell>
         </ng-container>
 
-        <ng-container matColumnDef="thursday">
-          <mat-header-cell *matHeaderCellDef>Thursday</mat-header-cell>
-          <mat-cell *matCellDef="let entry;let i = index;" class="hours">
-            <mat-form-field>
-              <input min=0  max=23.75 pattern="^(?!0\d)\d+(?:[.](?:25|5|75|0)0*)?$" required #today="ngModel" matInput [(ngModel)]="entry.thursdayHours" name="thursday{{i}}">
-            </mat-form-field>
+        <ng-container matColumnDef="totalHours">
+          <mat-header-cell *matHeaderCellDef>Total Hours</mat-header-cell>
+          <mat-cell *matCellDef="let entry;let i = index;" class="hours">{{entry.totalHours}}
           </mat-cell>
           <mat-footer-cell *matFooterCellDef></mat-footer-cell>
         </ng-container>
 
-        <ng-container matColumnDef="friday">
-          <mat-header-cell *matHeaderCellDef>Friday</mat-header-cell>
-          <mat-cell *matCellDef="let entry;let i = index;" class="hours">
-            <mat-form-field>
-              <input min=0  max=23.75 pattern="^(?!0\d)\d+(?:[.](?:25|5|75|0)0*)?$" required #today="ngModel" matInput [(ngModel)]="entry.fridayHours"  name="friday{{i}}">
-            </mat-form-field>
+        <ng-container matColumnDef="attachment">
+          <mat-header-cell *matHeaderCellDef>Attchment</mat-header-cell>
+          <mat-cell *matCellDef="let entry;let i = index;" class="hours">{{entry.attachment}}
           </mat-cell>
           <mat-footer-cell *matFooterCellDef></mat-footer-cell>
         </ng-container>
 
-        <ng-container matColumnDef="saturday">
-          <mat-header-cell *matHeaderCellDef>Saturday</mat-header-cell>
-          <mat-cell *matCellDef="let entry;let i = index;" class="hours">
-            <mat-form-field>
-              <input min=0  max=23.75 pattern="^(?!0\d)\d+(?:[.](?:25|5|75|0)0*)?$" required #today="ngModel" matInput [(ngModel)]="entry.saturdayHours"  name="saturday{{i}}">
-            </mat-form-field>
-          </mat-cell>
-          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-        </ng-container>
+        <ng-container matColumnDef="client">
+          <mat-header-cell *matHeaderCellDef>Client</mat-header-cell>
+          <mat-cell *matCellDef="let entry;let i = index;" class="hours">{{entry.client}}
 
-        <ng-container matColumnDef="sunday">
-          <mat-header-cell *matHeaderCellDef>Sunday</mat-header-cell>
-          <mat-cell *matCellDef="let entry;let i = index;" class="hours">
-            <mat-form-field>
-              <input min=0  max=23.75 pattern="^(?!0\d)\d+(?:[.](?:25|5|75|0)0*)?$" required #today="ngModel" matInput [(ngModel)]="entry.sundayHours"  name="sunday{{i}}">
-            </mat-form-field>
-          </mat-cell>
-          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="total">
-          <mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
-          <mat-cell *matCellDef="let entry;let i = index;" class="hours">
-            <mat-form-field>
-              <input min=0  max=23.75 pattern="^(?!0\d)\d+(?:[.](?:25|5|75|0)0*)?$" required #today="ngModel" matInput [(ngModel)]="entry.totalHours"  name="totalHours{{i}}">
-            </mat-form-field>
           </mat-cell>
           <mat-footer-cell *matFooterCellDef></mat-footer-cell>
         </ng-container>

@@ -18,6 +18,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { ProjectComponent } from './project/project.component';
+import { CurrentProjectComponent } from './current-project/current-project.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
+import { CurrentTimesheetComponent } from './current-timesheet/current-timesheet.component';
 
 const routes: Routes = [
 
@@ -28,6 +33,18 @@ const routes: Routes = [
   {
     path     : 'past-due',
     component: PastDueComponent
+  },
+  {
+    path     : 'current-timesheet',
+    component: CurrentTimesheetComponent
+  },
+  {
+    path     : 'project',
+    component: ProjectComponent
+  },
+  {
+    path     : 'current-project',
+    component: CurrentProjectComponent
   }
 ];
 
@@ -36,7 +53,10 @@ const routes: Routes = [
     HomeComponent,
     PastDueComponent,
     ToolbarComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    ProjectComponent,
+    CurrentProjectComponent,
+    CurrentTimesheetComponent
   ],
   exports: [
     ToolbarComponent
@@ -57,7 +77,9 @@ const routes: Routes = [
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatSelectModule
   ]
 })
 export class AppsModule { }
