@@ -1,0 +1,14 @@
+<div class="register">
+  <div class="container" id="container">
+    <form action="#" [formGroup]="registerForm">
+      <h1>Sign UP</h1>
+      <input type="text" placeholder="firstname" formControlName="first_name" />
+      <input type="text" placeholder="lastname" formControlName="last_name" />
+      <input type="text" placeholder="Username" formControlName="username" />
+      <input type="email" placeholder="email@gmail.com" formControlName="email" />
+      <input type="password" placeholder="Password" formControlName="password" />
+      <button (click)="submit()">Sign Up</button>
+      <button [routerLink]="'/login'">Login Here</button>
+    </form>
+  </div>
+</div>

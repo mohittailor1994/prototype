@@ -1,12 +1,13 @@
 <div class="login">
   <div class="container" id="container">
-    <form action="#" [formGroup]="form">
+    <form action="#" [formGroup]="loginForm">
       <h1>Sign in</h1>
       <span>or use your account</span>
-      <input type="email" placeholder="Username" formControlName="username" />
+      <input type="email" placeholder="Username" formControlName="email" />
       <input type="password" placeholder="Password" formControlName="password" />
       <!--      <a href="#">Forgot your password?</a>-->
       <button (click)="submit()">Sign In</button>
+      <button [routerLink]="'/register'">Sign Up here</button>
     </form>
   </div>
 </div>

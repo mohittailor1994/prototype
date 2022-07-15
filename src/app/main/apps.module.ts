@@ -23,6 +23,8 @@ import { CurrentProjectComponent } from './current-project/current-project.compo
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { CurrentTimesheetComponent } from './current-timesheet/current-timesheet.component';
+import { RegisterComponent } from './register/register.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
 
@@ -56,7 +58,8 @@ const routes: Routes = [
     BreadcrumbComponent,
     ProjectComponent,
     CurrentProjectComponent,
-    CurrentTimesheetComponent
+    CurrentTimesheetComponent,
+    RegisterComponent
   ],
   exports: [
     ToolbarComponent
@@ -65,6 +68,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     LoginModule,
+    HttpClientModule,
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
