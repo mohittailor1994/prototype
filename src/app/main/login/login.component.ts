@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
 
   submit() {
       if (this.loginForm.invalid) {
+        this.error = 'Username or password invalid';
         return;
       }
       this.apiService.login(this.hasError.email.value, this.hasError.password.value )
@@ -44,13 +45,8 @@ export class LoginComponent implements OnInit {
           },
           error: (error: any) => {
             this.error = error;
+            this.error = 'Username or password invalid';
           }
         });
-      // if (this.form.value.username === 'admin' && this.form.value.password === 'admin'){
-      //   this.error = null;
-      //   this.router.navigate(['/home']);
-      // } else{
-      //   this.error = 'Username or password invalid';
-      // }
     }
 }

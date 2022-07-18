@@ -26,7 +26,7 @@
         <a href="home" mat-button>Documents</a>
         <a [matMenuTriggerFor]="User" mat-button>User</a>
         <mat-menu #User="matMenu" >
-          <button [routerLink]="'../login'" mat-menu-item>Logout</button>
+          <button (click)="logOut()" mat-menu-item>Logout</button>
         </mat-menu>
       </div>
     </mat-toolbar-row>

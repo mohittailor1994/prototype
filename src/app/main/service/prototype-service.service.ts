@@ -12,7 +12,8 @@ export class User {
   email: string;
   roles: [];
   token: string;
-  refreshTokenExpiration: string
+  refreshTokenExpiration: string;
+  access_token: User;
 }
 
 @Injectable({
@@ -36,11 +37,11 @@ export class PrototypeServiceService {
   public user: Observable<User>;
 
   registerUser(data: any) {
-    return this.http.post(environment.api + 'timesheet/api/user/register', data )
+    return this.http.post(environment.endpointUrl + 'timesheet/api/user/register', data)
   }
 
   currentProject(data: any) {
-    return this.http.post(environment.api + 'timesheet/api/user/project', data)
+    return this.http.post(environment.endpointUrl + 'timesheet/api/user/project', data)
   }
 
   login(email: any, Password: any) {
@@ -48,18 +49,27 @@ export class PrototypeServiceService {
       "Password": Password,
       "email": email,
     };
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
-    debugger
-    return this.http.post<any>(environment.api + `timesheet/api/user/token`, body, { headers: headers})
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
+      'Authorization': 'Bearer szdp79a2kz4wh4frjzuqu4sz6qeth8m3',
+    });
+    return this.http.post<any>(environment.endpointUrl + `timesheet/api/user/token`, body, { headers: headers})
       .pipe(map((user: User) => {
-        debugger
         // login successful if there's a jwt token in the response
         if (user && user.token) {
-          debugger
           localStorage.setItem('user', JSON.stringify(user));
           this.userSubject.next(user);
         }
         return user;
       }));
+  }
+
+  logout() {
+    // remove user from local storage to log user out
+   localStorage.removeItem('user');
+    this.router.navigate(['/login']);
   }
 }

@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-
-  api: 'http://107.180.93.45/'
-  // https://107.180.93.45/timesheet/api/user/register
+  hmr       : false,
+  api: 'http://localhost:4200',
+  endpointUrl: 'https://107.180.93.45/',
 };
 
 /*

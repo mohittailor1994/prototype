@@ -24,7 +24,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { CurrentTimesheetComponent } from './current-timesheet/current-timesheet.component';
 import { RegisterComponent } from './register/register.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ErrorInterceptor } from '../error.interceptor';
 
 const routes: Routes = [
 
@@ -52,14 +53,14 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    HomeComponent,
     PastDueComponent,
     ToolbarComponent,
     BreadcrumbComponent,
     ProjectComponent,
     CurrentProjectComponent,
     CurrentTimesheetComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   exports: [
     ToolbarComponent
@@ -84,6 +85,13 @@ const routes: Routes = [
     MatInputModule,
     MatDatepickerModule,
     MatSelectModule
-  ]
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    }
+  ],
 })
 export class AppsModule { }

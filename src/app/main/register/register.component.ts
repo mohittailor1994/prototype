@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PrototypeServiceService } from '../service/prototype-service.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -26,16 +27,22 @@ export class RegisterComponent implements OnInit {
 
   submit(){
     if(this.registerForm.valid) {
-       const userData = {
-         "FirstName": this.registerForm.value.first_name,
-         "LastName": this.registerForm.value.last_name,
-         "UserName": this.registerForm.value.username,
-         "email": this.registerForm.value.email,
-         "PassWord": this.registerForm.value.password,
-       }
-      this.apiService.registerUser(userData).subscribe((res: any) => {
+      const userData = {
+        "FirstName": this.registerForm.value.first_name,
+        "LastName": this.registerForm.value.last_name,
+        "UserName": this.registerForm.value.username,
+        "email": this.registerForm.value.email,
+        "PassWord": this.registerForm.value.password,
+      };
+      this.apiService.registerUser(userData)
+        .pipe(first())
+        .subscribe({
+          next: () => {
+          },
+          error: (error: any) => {
 
-      });
+          }
+        });
     }
   }
 

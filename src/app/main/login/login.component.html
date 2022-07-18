@@ -3,9 +3,12 @@
     <form action="#" [formGroup]="loginForm">
       <h1>Sign in</h1>
       <span>or use your account</span>
-      <input type="email" placeholder="Username" formControlName="email" />
-      <input type="password" placeholder="Password" formControlName="password" />
+      <input type="email" placeholder="Username" formControlName="email" required/>
+      <input type="password" placeholder="Password" formControlName="password" required/>
       <!--      <a href="#">Forgot your password?</a>-->
+      <p *ngIf="error" class="error">
+        {{ error }}
+      </p>
       <button (click)="submit()">Sign In</button>
       <button [routerLink]="'/register'">Sign Up here</button>
     </form>
