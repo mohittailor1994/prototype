@@ -1,3 +1,4 @@
+<app-progress-spiner [visible]="loading" ></app-progress-spiner>
 <div class="login">
   <div class="container" id="container">
     <form action="#" [formGroup]="loginForm">
@@ -6,9 +7,6 @@
       <input type="email" placeholder="Username" formControlName="email" required/>
       <input type="password" placeholder="Password" formControlName="password" required/>
       <!--      <a href="#">Forgot your password?</a>-->
-      <p *ngIf="error" class="error">
-        {{ error }}
-      </p>
       <button (click)="submit()">Sign In</button>
       <button [routerLink]="'/register'">Sign Up here</button>
     </form>

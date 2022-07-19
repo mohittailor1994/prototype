@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { ProgressSpinerComponent } from "../../progress-spiner/progress-spiner.component";
 
 const routes = [
   {
@@ -16,7 +17,7 @@ const routes = [
 ];
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, ProgressSpinerComponent],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,

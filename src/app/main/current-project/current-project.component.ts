@@ -13,6 +13,7 @@ import {NotificationService} from "../service/prototype-notification.service";
 export class CurrentProjectComponent implements OnInit {
 
   currentProjectFormData: FormGroup;
+  loading = false;
 
   constructor(private apiService: PrototypeServiceService,
               private router: Router,
@@ -52,44 +53,54 @@ export class CurrentProjectComponent implements OnInit {
   }
 
   save() {
-    const projectObj = {
-      "id": 0,
-      "month": "",
-      "consultant": this.currentProjectFormData.value.consultant,
-      "startdate": moment(this.currentProjectFormData.value.startDate).format('YYYY-MM-DD'),
-      "enddate":  moment(this.currentProjectFormData.value.endDate).format('YYYY-MM-DD'),
-      "scheduledate": moment(this.currentProjectFormData.value.scheduleDate).format('YYYY-MM-DD'),
-      "workaddress": this.currentProjectFormData.value.workAddress,
-      "workmanager": this.currentProjectFormData.value.workManager,
-      "workmanagerphone": this.currentProjectFormData.value.workManagerPhone,
-      "workemail":  this.currentProjectFormData.value.workEmail,
-      "workfax": this.currentProjectFormData.value.workFax,
-      "workphone": this.currentProjectFormData.value.workPhone,
-      "industry": this.currentProjectFormData.value.industry,
-      "position": this.currentProjectFormData.value.position,
-      "endclient":  this.currentProjectFormData.value.endClient,
-      "workmanageremail": this.currentProjectFormData.value.workManagerEmail,
-      "projectDescription": this.currentProjectFormData.value.projectDescription,
-      "technologiesUsed": this.currentProjectFormData.value.technologiesUsed,
-      "roleAndResponsibillities": this.currentProjectFormData.value.roleAndResponsibillities,
-      "zip": this.currentProjectFormData.value.zip,
-      "state": this.currentProjectFormData.value.state,
-      "city": this.currentProjectFormData.value.city,
-      "user_id": null,
-      "created_by": null,
-      "created_at": null,
-      "modified_by": null,
-      "modified_date": null
-    };
-    const json = JSON.stringify(projectObj);
-    this.apiService.currentProject(json).subscribe((res: any) => {
-      if (res.sucess){
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'home';
-        this.router.navigateByUrl(returnUrl);
-        this.notification.showSuccess(res.success, 'success');
-      }
-    },(error: any) => {
-      this.notification.showError(error, 'error')
-    })
+    this.loading = true;
+    if (this.currentProjectFormData.valid){
+      const projectObj = {
+        "id": 0,
+        "month": "",
+        "consultant": this.currentProjectFormData.value.consultant,
+        "startdate": moment(this.currentProjectFormData.value.startDate).format('YYYY-MM-DD'),
+        "enddate":  moment(this.currentProjectFormData.value.endDate).format('YYYY-MM-DD'),
+        "scheduledate": moment(this.currentProjectFormData.value.scheduleDate).format('YYYY-MM-DD'),
+        "workaddress": this.currentProjectFormData.value.workAddress,
+        "workmanager": this.currentProjectFormData.value.workManager,
+        "workmanagerphone": this.currentProjectFormData.value.workManagerPhone,
+        "workemail":  this.currentProjectFormData.value.workEmail,
+        "workfax": this.currentProjectFormData.value.workFax,
+        "workphone": this.currentProjectFormData.value.workPhone,
+        "industry": this.currentProjectFormData.value.industry,
+        "position": this.currentProjectFormData.value.position,
+        "endclient":  this.currentProjectFormData.value.endClient,
+        "workmanageremail": this.currentProjectFormData.value.workManagerEmail,
+        "projectDescription": this.currentProjectFormData.value.projectDescription,
+        "technologiesUsed": this.currentProjectFormData.value.technologiesUsed,
+        "roleAndResponsibillities": this.currentProjectFormData.value.roleAndResponsibillities,
+        "zip": this.currentProjectFormData.value.zip,
+        "state": this.currentProjectFormData.value.state,
+        "city": this.currentProjectFormData.value.city,
+        "user_id": null,
+        "created_by": null,
+        "created_at": null,
+        "modified_by": null,
+        "modified_date": null
+      };
+      const json = JSON.stringify(projectObj);
+      this.apiService.currentProject(json).subscribe((res: any) => {
+        if (res.success){
+          this.loading = false;
+          this.router.navigate(['../home']);
+          this.notification.showSuccess('Project Successfully Submitted', 'success');
+        } else{
+          this.loading = false;
+        }
+      },(error: any) => {
+        this.loading = false;
+        this.notification.showError('', 'Error!')
+      })
+    } else{
+      this.notification.showError('Please Fill Required Data', 'Error!');
+      this.loading = false;
+    }
+
   }
 }

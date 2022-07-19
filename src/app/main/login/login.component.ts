@@ -11,7 +11,7 @@ import { NotificationService } from '../service/prototype-notification.service'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  error: any;
+  loading = false;
   loginForm: FormGroup;
   @Output() submitEM = new EventEmitter();
 
@@ -34,8 +34,10 @@ export class LoginComponent implements OnInit {
   get hasError() { return this.loginForm.controls; }
 
   submit() {
+      this.loading = true;
       if (this.loginForm.invalid) {
-        this.notification.showError('Username or password is incorrect', 'error')
+        this.loading = false;
+        this.notification.showError('Username or password is incorrect', 'error');
         return;
       }
       this.apiService.login(this.hasError.email.value, this.hasError.password.value )
@@ -44,8 +46,10 @@ export class LoginComponent implements OnInit {
           next: () => {
             const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'home';
             this.router.navigateByUrl(returnUrl);
+            this.loading = false;
           },
           error: (error: any) => {
+            this.loading = false;
             this.notification.showError('Username or password is incorrect', 'error')
           }
         });

@@ -8,7 +8,15 @@ import { PrototypeServiceService } from '../service/prototype-service.service';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor(private prototypeServiceService: PrototypeServiceService) { }
+  userName: any;
+  email: any;
+  constructor(private prototypeServiceService: PrototypeServiceService) {
+    setTimeout(() => {
+      const user = JSON.parse(<any>localStorage.getItem('user'));
+      this.userName = user?.userName;
+      this.email = user?.email;
+    }, 2000);
+  }
 
   ngOnInit(): void {
   }

@@ -19,4 +19,4 @@ const routes = [
   ],
   providers: [],
 })
-export class AppsModule { }
+export class LoginsModule { }

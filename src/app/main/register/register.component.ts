@@ -12,6 +12,8 @@ import {NotificationService} from "../service/prototype-notification.service";
 })
 export class RegisterComponent implements OnInit {
 
+  loading = false;
+
   registerForm: FormGroup = new FormGroup({
     first_name: new FormControl('', [Validators.required]),
     last_name: new FormControl('', [Validators.required]),
@@ -29,6 +31,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submit(){
+    this.loading = true;
     if(this.registerForm.valid) {
       const userData = {
         "FirstName": this.registerForm.value.first_name,
@@ -38,13 +41,17 @@ export class RegisterComponent implements OnInit {
         "PassWord": this.registerForm.value.password,
       };
       this.apiService.registerUser(userData)
-        .subscribe((res: any) =>{
-          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'login';
-          this.router.navigateByUrl(returnUrl);
-          this.notification.showSuccess(res.result, 'success');
-
+        .subscribe((res: any) => {
+          if (res.success){
+            const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'login';
+            this.router.navigateByUrl(returnUrl);
+            this.notification.showSuccess('User Registration is Success', 'success');
+            this.loading = false;
+          } else{
+            this.loading = false;
+          }
         },  (error: any) => {
-
+          this.loading = false;
       } )
     } else {
       this.notification.showError('Please fill all mandatory field', 'Invalid')

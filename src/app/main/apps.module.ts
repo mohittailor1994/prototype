@@ -27,6 +27,8 @@ import { RegisterComponent } from './register/register.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ErrorInterceptor } from '../error.interceptor';
 import { TokenInterceptorService } from '../token-interceptor';
+import { ProgressSpinerComponent } from './progress-spiner/progress-spiner.component';
+import {SpinerModule} from "./progress-spiner/spiner.module";
 
 const routes: Routes = [
 
@@ -61,7 +63,8 @@ const routes: Routes = [
     CurrentProjectComponent,
     CurrentTimesheetComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    ProgressSpinerComponent
   ],
   exports: [
     ToolbarComponent
@@ -85,7 +88,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatInputModule,
     MatDatepickerModule,
-    MatSelectModule
+    MatSelectModule,
+    SpinerModule
   ],
   providers: [
     {
