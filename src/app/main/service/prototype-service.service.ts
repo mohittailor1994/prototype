@@ -41,7 +41,13 @@ export class PrototypeServiceService {
   }
 
   currentProject(data: any) {
-    return this.http.post(environment.endpointUrl + 'timesheet/api/user/project', data)
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
+    });
+    return this.http.post(environment.endpointUrl + 'timesheet/api/user/project', data,{ headers: headers})
   }
 
   login(email: any, Password: any) {
@@ -54,13 +60,13 @@ export class PrototypeServiceService {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
-      'Authorization': 'Bearer szdp79a2kz4wh4frjzuqu4sz6qeth8m3',
     });
     return this.http.post<any>(environment.endpointUrl + `timesheet/api/user/token`, body, { headers: headers})
       .pipe(map((user: User) => {
         // login successful if there's a jwt token in the response
         if (user && user.token) {
           localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('token', JSON.stringify(user.token).slice(1, -1));
           this.userSubject.next(user);
         }
         return user;

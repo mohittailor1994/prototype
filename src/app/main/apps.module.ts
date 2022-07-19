@@ -26,6 +26,7 @@ import { CurrentTimesheetComponent } from './current-timesheet/current-timesheet
 import { RegisterComponent } from './register/register.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ErrorInterceptor } from '../error.interceptor';
+import { TokenInterceptorService } from '../token-interceptor';
 
 const routes: Routes = [
 
@@ -90,6 +91,11 @@ const routes: Routes = [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
       multi: true,
     }
   ],

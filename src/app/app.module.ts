@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppsModule } from './main/apps.module';
 import { RegisterComponent } from './main/register/register.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const appRoutes: Routes = [
   {
@@ -35,6 +37,8 @@ const appRoutes: Routes = [
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     NgbModule,
     AppsModule
   ],

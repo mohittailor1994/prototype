@@ -20,7 +20,7 @@
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Consultant</mat-label>
-              <input  class="input-font-bold" formControlName="consultant" name="month"   matInput placeholder="" value="" required>
+              <input  class="input-font-bold" formControlName="consultant" name="consultant"   matInput placeholder="" value="" required>
               <mat-error>consultant is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
@@ -28,7 +28,9 @@
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Start Date</mat-label>
-              <input  class="input-font-bold" formControlName="startDate" name="startDate"  matInput required>
+              <input  class="input-font-bold" formControlName="startDate" name="startDate" [matDatepicker]="picker1"   matInput placeholder="" value="" required>
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
               <mat-error>Start Date is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
@@ -36,16 +38,20 @@
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>End Date</mat-label>
-              <input  class="input-font-bold" formControlName="endDate" name="endDate"   matInput required>
-              <mat-error>Start Date is required</mat-error>
+              <input  class="input-font-bold" formControlName="endDate" name="endDate" [matDatepicker]="picker2"   matInput placeholder="" value="" required>
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+              <mat-error>End Date is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile>
             <mat-form-field>
-              <mat-label>Schedule End Date</mat-label>
-              <input  class="input-font-bold" formControlName="scheduleDate" name="scheduleDate"   matInput required>
-              <mat-error>Start Date is required</mat-error>
+              <mat-label>Schedule Date</mat-label>
+              <input  class="input-font-bold" formControlName="scheduleDate" name="scheduleDate" [matDatepicker]="picker3"   matInput placeholder="" value="" required>
+              <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+              <mat-datepicker #picker3></mat-datepicker>
+              <mat-error>Schedule is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
@@ -61,95 +67,95 @@
             <mat-form-field>
               <mat-label>Position Title</mat-label>
               <input  class="input-font-bold" formControlName="position" name="position"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
+              <mat-error>Position is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Industry</mat-label>
-              <input  class="input-font-bold" formControlName="industry" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
+              <input  class="input-font-bold" formControlName="industry" name="industry"   matInput placeholder="" value="" required>
+              <mat-error>Industry is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Work Phone</mat-label>
-              <input  class="input-font-bold" formControlName="workPhone" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
+              <input  class="input-font-bold" formControlName="workPhone" name="workPhone"   matInput placeholder="" value="" required>
+              <mat-error>Work Phone is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Work Fax</mat-label>
-              <input  class="input-font-bold" formControlName="workFax" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
+              <input  class="input-font-bold" formControlName="workFax" name="workFax"   matInput placeholder="" value="" required>
+              <mat-error>Work Fax is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Work Email</mat-label>
-              <input  class="input-font-bold" formControlName="workEmail" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
+              <input  class="input-font-bold" formControlName="workEmail" name="workEmail"   matInput placeholder="" value="" required>
+              <mat-error>Work Email is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Work Manager</mat-label>
-              <input  class="input-font-bold" formControlName="workManager" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
+              <input  class="input-font-bold" formControlName="workManager" name="workManager"   matInput placeholder="" value="" required>
+              <mat-error>Work Manager is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Work Manager Phone</mat-label>
-              <input  class="input-font-bold" formControlName="workManagerPhone" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
+              <input  class="input-font-bold" formControlName="workManagerPhone" name="workManagerPhone"   matInput placeholder="" value="" required>
+              <mat-error>Work Manager Phone is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Work Manager Email</mat-label>
-              <input  class="input-font-bold" formControlName="workManagerEmail" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
+              <input  class="input-font-bold" formControlName="workManagerEmail" name="workManagerEmail"   matInput placeholder="" value="" required>
+              <mat-error>Work Manager Email is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Work Address</mat-label>
-              <input  class="input-font-bold" formControlName="workAddress" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
+              <input  class="input-font-bold" formControlName="workAddress" name="workAddress"   matInput placeholder="" value="" required>
+              <mat-error>Work is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>City</mat-label>
-              <input  class="input-font-bold" formControlName="city" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
+              <input  class="input-font-bold" formControlName="city" name="city"   matInput placeholder="" value="" required>
+              <mat-error>City is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>State</mat-label>
-              <input  class="input-font-bold" formControlName="state" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
+              <input  class="input-font-bold" formControlName="state" name="state"   matInput placeholder="" value="" required>
+              <mat-error>State is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile>
             <mat-form-field>
               <mat-label>Zip Code</mat-label>
-              <input  class="input-font-bold" formControlName="zip" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
+              <input  class="input-font-bold" formControlName="zip" name="zip"   matInput placeholder="" value="" required>
+              <mat-error>Zip is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
@@ -186,46 +192,6 @@
                         #autosize="cdkTextareaAutosize"
                         cdkAutosizeMinRows="1"
                         cdkAutosizeMaxRows="5"></textarea>
-            </mat-form-field>
-          </mat-grid-tile>
-
-          <mat-grid-tile>
-            <mat-form-field>
-              <mat-label>User ID</mat-label>
-              <input  class="input-font-bold" formControlName="user_id" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
-            </mat-form-field>
-          </mat-grid-tile>
-
-          <mat-grid-tile>
-            <mat-form-field>
-              <mat-label>Created BY</mat-label>
-              <input  class="input-font-bold" formControlName="created_by" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
-            </mat-form-field>
-          </mat-grid-tile>
-
-          <mat-grid-tile>
-            <mat-form-field>
-              <mat-label>Created At</mat-label>
-              <input  class="input-font-bold" formControlName="created_at" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
-            </mat-form-field>
-          </mat-grid-tile>
-
-          <mat-grid-tile>
-            <mat-form-field>
-              <mat-label>Modified By</mat-label>
-              <input  class="input-font-bold" formControlName="modified_by" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
-            </mat-form-field>
-          </mat-grid-tile>
-
-          <mat-grid-tile>
-            <mat-form-field>
-              <mat-label>Modified Date</mat-label>
-              <input  class="input-font-bold" formControlName="modified_date" name="month"   matInput placeholder="" value="" required>
-              <mat-error>Month is required</mat-error>
             </mat-form-field>
           </mat-grid-tile>
 
