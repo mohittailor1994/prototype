@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { PrototypeServiceService } from '../service/prototype-service.service';
 import { first } from 'rxjs/operators';
+import { NotificationService } from '../service/prototype-notification.service'
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   constructor( private route: ActivatedRoute,
                private router: Router,
                private _formBuilder: FormBuilder,
+               private notification: NotificationService,
                private apiService: PrototypeServiceService) { }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class LoginComponent implements OnInit {
 
   submit() {
       if (this.loginForm.invalid) {
-        this.error = 'Username or password invalid';
+        this.notification.showError('Username or password is incorrect', 'error')
         return;
       }
       this.apiService.login(this.hasError.email.value, this.hasError.password.value )
@@ -44,8 +46,7 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl(returnUrl);
           },
           error: (error: any) => {
-            this.error = error;
-            this.error = 'Username or password invalid';
+            this.notification.showError('Username or password is incorrect', 'error')
           }
         });
     }

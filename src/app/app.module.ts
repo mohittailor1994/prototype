@@ -12,6 +12,9 @@ import { AppsModule } from './main/apps.module';
 import { RegisterComponent } from './main/register/register.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ToastModule ,ToastService } from 'ng-uikit-pro-standard';
+import {NotificationService} from "./main/service/prototype-notification.service";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 const appRoutes: Routes = [
   {
@@ -39,10 +42,13 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule,
+    ToastModule.forRoot(),
     NgbModule,
     AppsModule
   ],
-  providers: [],
+  providers: [ToastService,
+  NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

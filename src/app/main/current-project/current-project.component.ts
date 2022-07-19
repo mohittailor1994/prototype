@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PrototypeServiceService } from '../service/prototype-service.service'
 import * as moment from 'moment';
+import {ActivatedRoute, Router} from "@angular/router";
+import {NotificationService} from "../service/prototype-notification.service";
 
 @Component({
   selector: 'app-current-project',
@@ -12,7 +14,10 @@ export class CurrentProjectComponent implements OnInit {
 
   currentProjectFormData: FormGroup;
 
-  constructor(private apiService: PrototypeServiceService) {   }
+  constructor(private apiService: PrototypeServiceService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private notification: NotificationService,) {   }
 
   ngOnInit(): void {
     this.currentProjectFormData = new FormGroup({
@@ -79,8 +84,12 @@ export class CurrentProjectComponent implements OnInit {
     const json = JSON.stringify(projectObj);
     this.apiService.currentProject(json).subscribe((res: any) => {
       if (res.sucess){
-        console.log(res.sucess);
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'home';
+        this.router.navigateByUrl(returnUrl);
+        this.notification.showSuccess(res.success, 'success');
       }
+    },(error: any) => {
+      this.notification.showError(error, 'error')
     })
   }
 }

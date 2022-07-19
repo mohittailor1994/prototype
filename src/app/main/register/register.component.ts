@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { PrototypeServiceService } from '../service/prototype-service.service';
 import { first } from 'rxjs/operators';
+import {NotificationService} from "../service/prototype-notification.service";
 
 @Component({
   selector: 'app-register',
@@ -20,6 +21,8 @@ export class RegisterComponent implements OnInit {
   });
 
   constructor(private router: Router,
+              private route: ActivatedRoute,
+              private notification: NotificationService,
               private apiService: PrototypeServiceService) { }
 
   ngOnInit(): void {
@@ -35,14 +38,16 @@ export class RegisterComponent implements OnInit {
         "PassWord": this.registerForm.value.password,
       };
       this.apiService.registerUser(userData)
-        .pipe(first())
-        .subscribe({
-          next: () => {
-          },
-          error: (error: any) => {
+        .subscribe((res: any) =>{
+          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'login';
+          this.router.navigateByUrl(returnUrl);
+          this.notification.showSuccess(res.result, 'success');
 
-          }
-        });
+        },  (error: any) => {
+
+      } )
+    } else {
+      this.notification.showError('Please fill all mandatory field', 'Invalid')
     }
   }
 
